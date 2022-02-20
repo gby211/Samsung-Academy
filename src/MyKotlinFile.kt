@@ -1,4 +1,8 @@
 fun main() {
+    print("Hello WORLD!!!!")
+}
+
+fun timeOfDay() {
     print("Enter hour of day - ")
     val hourOfDay: Int = readLine()!!.toInt()
     val timeOfDay: String
@@ -12,4 +16,10 @@ fun main() {
         else -> "Invalid"
     }
     println("Now - $timeOfDay")
+}
+
+fun templates(){
+    val s = "abc"
+    val str = "$s.length is ${s.length}" // evaluates to "abc.length is 3"
+    print(str)
 }

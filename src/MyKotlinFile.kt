@@ -2,7 +2,26 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 fun main() {
-    practicalWork1_1()
+    practicalWork1_2()
+}
+
+/*
+ДНК состоит из 4 типов нуклеотидов: A (аденин), T (тимин), G (гуанин), C (цитозин).
+
+Ваша программа получает на вход строку вида ATGCCTCTCTC и должна посчитать число нуклеотидов каждого типа (вывести числа через пробел в порядке как в строке выше).
+ */
+fun practicalWork1_2() {
+
+    val string2 = readLine()?.toCharArray()
+    val charsMap = mutableMapOf<Char, Int>()
+    val builder = StringBuilder()
+
+    string2?.forEach {
+        charsMap[it] = charsMap.getOrDefault(it, 0) + 1
+    }
+
+    for (count in charsMap) builder.append("${count.value} ")
+    println(builder.dropLast(1))
 }
 
 /*
@@ -15,18 +34,18 @@ fun main() {
 YES
 */
 fun practicalWork1_1() {
-    var (aa, bb,mm,nn) = readLine()!!.split(' ')
-    var a = aa.toDouble()
-    var b = bb.toDouble()
-    var m = mm.toDouble()
-    var n = nn.toDouble()
-    if (a * b < m * n){
+    val (aa, bb, mm, nn) = readLine()!!.split(' ')
+    val a = aa.toDouble()
+    val b = bb.toDouble()
+    val m = mm.toDouble()
+    val n = nn.toDouble()
+    if (a * b < m * n) {
         println("NO")
-    }else if (a<m && b<m){
+    } else if (a < m && b < m) {
         println("NO")
-    }else if (a<n && b<n){
+    } else if (a < n && b < n) {
         println("NO")
-    }else println("YES")
+    } else println("YES")
 }
 
 fun helloWorld() {

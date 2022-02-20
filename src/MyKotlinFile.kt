@@ -14,6 +14,11 @@ fun practicalWork1_2() {
 
     val string2 = readLine()?.toCharArray()
     val charsMap = mutableMapOf<Char, Int>()
+    charsMap['A'] = 0
+    charsMap['T'] = 0
+    charsMap.put('G',0)
+    charsMap.put('C',0)
+
     val builder = StringBuilder()
 
     string2?.forEach {

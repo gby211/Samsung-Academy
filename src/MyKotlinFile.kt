@@ -2,7 +2,31 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 fun main() {
-    sumEven()
+    practicalWork1_1()
+}
+
+/*
+Дана комната со сторонами a и b и ковер со сторонами m и n. Определить помещается ли ковер в комнату (ковер можно поворачивать, но нельзя складывать). На вход программе подается четыре вещественных числа, разделенных пробелом: a, b, m и n. На выходе необходимо напечатать "YES", если ковер помещается в комнату и "NO" в противном случае.
+
+Пример входных данных:
+10 5 7 3
+
+Пример выходных данных:
+YES
+*/
+fun practicalWork1_1() {
+    var (aa, bb,mm,nn) = readLine()!!.split(' ')
+    var a = aa.toDouble()
+    var b = bb.toDouble()
+    var m = mm.toDouble()
+    var n = nn.toDouble()
+    if (a * b < m * n){
+        println("NO")
+    }else if (a<m && b<m){
+        println("NO")
+    }else if (a<n && b<n){
+        println("NO")
+    }else println("YES")
 }
 
 fun helloWorld() {
@@ -50,8 +74,8 @@ fun sumEven() {
     val intAr = IntArray(10) { rand.nextInt(300) }
     var sum = 0
     val intArEv: ArrayList<Int> = ArrayList()
-    for (value in intAr){
-        if(value%2==0) {
+    for (value in intAr) {
+        if (value % 2 == 0) {
             sum += value
             intArEv.add(value)
         }
@@ -59,4 +83,22 @@ fun sumEven() {
     println("Initial array - ${intAr.contentToString()}")
     println("ArrayList of even numbers - $intArEv")
     println("Sum of even numbers - $sum")
+}
+
+fun DimensionalArray() {
+    var rand = Random()
+    val intAr2 = Array(5, { IntArray(6, { rand.nextInt(10) }) })
+    var max = Int.MIN_VALUE
+
+    for (strArray in intAr2) {
+        println(strArray.contentToString())
+        var sum = 0
+        for (num in strArray) {
+            sum += num
+        }
+        if (max < sum)
+            max = sum
+    }
+    println(max)
+
 }

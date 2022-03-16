@@ -2,8 +2,11 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 fun main() {
-    practicalWork1_2()
+    val paws = CatDocument.PAWS
+    println(paws)
 }
+
+//////////////////////////////////// модуль 1.1
 
 /*
 ДНК состоит из 4 типов нуклеотидов: A (аденин), T (тимин), G (гуанин), C (цитозин).
@@ -126,3 +129,33 @@ fun DimensionalArray() {
     println(max)
 
 }
+
+//////////////////////////////////// модуль 1.2
+
+
+class InitOrderDemo(name: String) {
+    val firstProperty = "Первое свойство: $name".also(::println)
+    init {
+        println("Первый блок инициализации: ${name}")
+    }
+    val secondProperty = "Второе свойство: ${name.length}".also(::println)
+    init {
+        println("Второй блок инициализации: ${name.length}")
+    }
+}
+
+
+enum class CatDocument {
+    VIBRISSAE, PAWS, TAIL
+}
+
+
+
+
+
+
+
+
+
+
+

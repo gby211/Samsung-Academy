@@ -2,8 +2,16 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 fun main() {
-    val paws = CatDocument.PAWS
-    println(paws)
+    var robot = Robot(0,0,Direction.UP)
+    println(robot.toString())
+    robot.stepForward()
+    robot.stepForward()
+    println(robot.toString())
+    robot.turnRight()
+    robot.stepForward()
+    robot.stepForward()
+    println(robot.toString())
+
 }
 
 //////////////////////////////////// модуль 1.1
@@ -19,8 +27,8 @@ fun practicalWork1_2() {
     val charsMap = mutableMapOf<Char, Int>()
     charsMap['A'] = 0
     charsMap['T'] = 0
-    charsMap.put('G',0)
-    charsMap.put('C',0)
+    charsMap.put('G', 0)
+    charsMap.put('C', 0)
 
     val builder = StringBuilder()
 
@@ -135,10 +143,13 @@ fun DimensionalArray() {
 
 class InitOrderDemo(name: String) {
     val firstProperty = "Первое свойство: $name".also(::println)
+
     init {
         println("Первый блок инициализации: ${name}")
     }
+
     val secondProperty = "Второе свойство: ${name.length}".also(::println)
+
     init {
         println("Второй блок инициализации: ${name.length}")
     }
@@ -150,8 +161,57 @@ enum class CatDocument {
 }
 
 
+/*
+Необходимо разработать класс для управления роботом (Robot), содержащий поля координат `x`, `y` (тип Int) и направления `direction`.
+Для направления уже определён заранее тип `Direction`:
 
+enum class Direction {
+UP, DOWN, RIGHT, LEFT
+}
 
+Обратите внимание, что мы используем тип enum для указания направления. Для управления роботом определите методы turnLeft(),
+turnRight(), stepForward(). Конструктор получает параметры (`x`, `y`, `direction`). Предусмотрите вывод состояния робота методом
+`toString()` в виде "x: $x, y: $y, dir: $direction"
+
+ */
+
+enum class Direction {
+    UP, DOWN, RIGHT, LEFT
+}
+
+class Robot(var x: Int, var y: Int, var direction: Direction) {
+
+    fun turnLeft() {
+        when(this.direction){
+            Direction.LEFT -> this.direction = Direction.DOWN
+            Direction.RIGHT -> this.direction = Direction.UP
+            Direction.DOWN -> this.direction = Direction.RIGHT
+            Direction.UP -> this.direction = Direction.LEFT
+        }
+    }
+
+    fun turnRight() {
+        when(this.direction){
+            Direction.LEFT -> this.direction = Direction.UP
+            Direction.RIGHT -> this.direction = Direction.DOWN
+            Direction.DOWN -> this.direction = Direction.LEFT
+            Direction.UP -> this.direction = Direction.RIGHT
+        }
+    }
+
+    fun stepForward() {
+        when(this.direction){
+            Direction.LEFT -> this.x -= 1
+            Direction.RIGHT -> this.x += 1
+            Direction.DOWN -> this.y -= 1
+            Direction.UP -> this.y += 1
+        }
+    }
+
+    override fun toString(): String {
+        return "x: $x, y: $y, dir: $direction"
+    }
+}
 
 
 

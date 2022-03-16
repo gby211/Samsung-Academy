@@ -6,7 +6,7 @@ fun main() {
     println(ggs)
     var robot = Robot(-100, 110, Direction.UP)
     println(robot.toString())
-    robot.moveRobot(robot, 10, 10)
+    moveRobot(robot, 10, 10)
     println(robot.toString())
 
 }
@@ -211,33 +211,34 @@ class Robot(var x: Int, var y: Int, var direction: Direction) {
 
 
     // Задача 2 пр 1.4
-    fun moveRobot(r: Robot, toX: Int, toY: Int) {
-        while (!(this.x == toX && this.y == toY)) {
-            while (toX != this.x) {
-                if (this.x > toX) {
-                    while (this.direction != Direction.LEFT) {
-                        turnRight()
-                    }
-                } else {
-                    while (this.direction != Direction.RIGHT) {
-                        turnRight()
-                    }
-                }
-                stepForward()
-            }
-            if (this.y > toY) {
-                while (this.direction != Direction.DOWN) {
-                    turnRight()
+
+
+}
+fun moveRobot(r: Robot, toX: Int, toY: Int) {
+    while (!(r.x == toX && r.y == toY)) {
+        while (toX != r.x) {
+            if (r.x > toX) {
+                while (r.direction != Direction.LEFT) {
+                    r.turnRight()
                 }
             } else {
-                while (this.direction != Direction.UP) {
-                    turnRight()
+                while (r.direction != Direction.RIGHT) {
+                    r.turnRight()
                 }
             }
-            stepForward()
+            r.stepForward()
         }
+        if (r.y > toY) {
+            while (r.direction != Direction.DOWN) {
+                r.turnRight()
+            }
+        } else {
+            while (r.direction != Direction.UP) {
+                r.turnRight()
+            }
+        }
+        r.stepForward()
     }
-
 }
 
 

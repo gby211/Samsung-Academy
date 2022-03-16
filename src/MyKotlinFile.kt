@@ -2,14 +2,11 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 fun main() {
-    var robot = Robot(0,0,Direction.UP)
+    val ggs = true && false
+    println(ggs)
+    var robot = Robot(-100, 110, Direction.UP)
     println(robot.toString())
-    robot.stepForward()
-    robot.stepForward()
-    println(robot.toString())
-    robot.turnRight()
-    robot.stepForward()
-    robot.stepForward()
+    robot.moveRobot(robot, 10, 10)
     println(robot.toString())
 
 }
@@ -182,7 +179,7 @@ enum class Direction {
 class Robot(var x: Int, var y: Int, var direction: Direction) {
 
     fun turnLeft() {
-        when(this.direction){
+        when (this.direction) {
             Direction.LEFT -> this.direction = Direction.DOWN
             Direction.RIGHT -> this.direction = Direction.UP
             Direction.DOWN -> this.direction = Direction.RIGHT
@@ -191,7 +188,7 @@ class Robot(var x: Int, var y: Int, var direction: Direction) {
     }
 
     fun turnRight() {
-        when(this.direction){
+        when (this.direction) {
             Direction.LEFT -> this.direction = Direction.UP
             Direction.RIGHT -> this.direction = Direction.DOWN
             Direction.DOWN -> this.direction = Direction.LEFT
@@ -200,7 +197,7 @@ class Robot(var x: Int, var y: Int, var direction: Direction) {
     }
 
     fun stepForward() {
-        when(this.direction){
+        when (this.direction) {
             Direction.LEFT -> this.x -= 1
             Direction.RIGHT -> this.x += 1
             Direction.DOWN -> this.y -= 1
@@ -211,6 +208,36 @@ class Robot(var x: Int, var y: Int, var direction: Direction) {
     override fun toString(): String {
         return "x: $x, y: $y, dir: $direction"
     }
+
+
+    // Задача 2 пр 1.4
+    fun moveRobot(r: Robot, toX: Int, toY: Int) {
+        while (!(this.x == toX && this.y == toY)) {
+            while (toX != this.x) {
+                if (this.x > toX) {
+                    while (this.direction != Direction.LEFT) {
+                        turnRight()
+                    }
+                } else {
+                    while (this.direction != Direction.RIGHT) {
+                        turnRight()
+                    }
+                }
+                stepForward()
+            }
+            if (this.y > toY) {
+                while (this.direction != Direction.DOWN) {
+                    turnRight()
+                }
+            } else {
+                while (this.direction != Direction.UP) {
+                    turnRight()
+                }
+            }
+            stepForward()
+        }
+    }
+
 }
 
 

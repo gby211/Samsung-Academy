@@ -1,6 +1,9 @@
 fun main() {
-    val ggs: String = "4561 2612 1234 5467"
-    println(ggs.isValidCCNumber())
+//    val ggs: String = "4561 2612 1234 5467"
+//    println(ggs.isValidCCNumber())
+    val floats = FloatArray(2)
+
+    println(floats.joinToString())
 }
 
 fun String.isValidCCNumber(): Boolean {
@@ -20,3 +23,4 @@ fun String.isValidCCNumber(): Boolean {
 
     return sumAll % 10 == 0
 }
+
